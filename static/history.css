@@ -1,5 +1,4 @@
 
-
 :root {
     --brown-dark: #403025;
     --brown: #5a4637;
@@ -62,12 +61,16 @@ body {
     width: 100%;
     height: 80px;
     padding: 0 55px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: var(--white);
     border-bottom: 1px solid var(--cream-dark);
+
     flex-shrink: 0;
+
     position: relative;
     z-index: 10;
 }
@@ -78,6 +81,18 @@ body {
 ========================================= */
 
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mark {
+    color: var(--brown);
+    font-size: 25px;
+    line-height: 1;
+}
+
+.brand-name {
     color: var(--brown-dark);
     font-size: 13px;
     font-weight: 700;
@@ -104,15 +119,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     height: 40px;
     padding: 0 18px;
+
     border: 1px solid var(--border);
     border-radius: 9px;
+
     background: var(--white);
     color: var(--brown);
+
     font-size: 12px;
     font-weight: 600;
+
     text-decoration: none;
+
     transition: all 0.2s ease;
 }
 
@@ -129,17 +150,23 @@ body {
 
 .container {
     flex: 1;
+
     width: 100%;
     max-width: 1200px;
+
     margin: 0 auto;
+
     padding: 45px 55px;
+
     overflow-y: auto;
     overflow-x: hidden;
+
+    min-width: 0;
 }
 
 
 /* =========================================
-   SCROLLBAR
+   MAIN SCROLLBAR
 ========================================= */
 
 .container::-webkit-scrollbar {
@@ -170,18 +197,26 @@ body {
 
 .page-header span {
     display: inline-block;
+
     color: var(--brown-light);
+
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: 2px;
+
     margin-bottom: 12px;
 }
 
 .page-header h1 {
     font-family: "Playfair Display", serif;
+
     font-size: clamp(40px, 5vw, 55px);
+
     line-height: 1;
+
     color: var(--brown-dark);
+
     margin-top: 0;
     margin-bottom: 12px;
 }
@@ -193,11 +228,53 @@ body {
 
 .history-table-container {
     width: 100%;
+    max-width: 100%;
+
     background: var(--white);
+
     border: 1px solid var(--cream-dark);
     border-radius: 18px;
+
+    /*
+       Both horizontal and vertical scrolling
+    */
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
+
+    /*
+       Desktop table height
+    */
+    max-height: 500px;
+
+    /*
+       Prevent flex/grid shrinking problems
+    */
+    min-width: 0;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================
+   TABLE SCROLLBAR
+========================================= */
+
+.history-table-container::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.history-table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-table-container::-webkit-scrollbar-thumb {
+    background: var(--brown-light);
+    border-radius: 10px;
+}
+
+.history-table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--brown);
 }
 
 
@@ -207,9 +284,19 @@ body {
 
 .history-table {
     width: 100%;
-    min-width: 650px;
-    border-collapse: collapse;
+
+    /*
+       Forces enough room for all columns
+       without allowing them to overlap
+    */
+    min-width: 900px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
     background: var(--white);
+
+    table-layout: auto;
 }
 
 
@@ -223,14 +310,31 @@ body {
 
 .history-table th {
     padding: 13px 16px;
+
     text-align: left;
+
     color: var(--brown-light);
     background: var(--white);
+
     font-size: 9px;
     font-weight: 700;
+
     letter-spacing: 1.5px;
     text-transform: uppercase;
+
+    /*
+       Prevent headers from wrapping
+    */
     white-space: nowrap;
+
+    /*
+       Keep header visible while scrolling vertically
+    */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    border-bottom: 1px solid var(--cream-dark);
 }
 
 
@@ -240,10 +344,19 @@ body {
 
 .history-table td {
     padding: 14px 16px;
+
     border-bottom: 1px solid #f0ece7;
+
     color: var(--brown-dark);
+
     font-size: 11px;
+
     vertical-align: middle;
+
+    /*
+       Prevent data from overlapping/wrapping
+    */
+    white-space: nowrap;
 }
 
 .history-table tbody tr {
@@ -260,12 +373,74 @@ body {
 
 
 /* =========================================
+   COLUMN WIDTHS
+========================================= */
+
+/* ID */
+
+.history-table th:nth-child(1),
+.history-table td:nth-child(1) {
+    min-width: 60px;
+}
+
+
+/* DATE & TIME */
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+    min-width: 155px;
+}
+
+
+/* CUSTOMER NAME */
+
+.history-table th:nth-child(3),
+.history-table td:nth-child(3) {
+    min-width: 170px;
+}
+
+
+/* SERVICE */
+
+.history-table th:nth-child(4),
+.history-table td:nth-child(4) {
+    min-width: 150px;
+}
+
+
+/* MATERIAL */
+
+.history-table th:nth-child(5),
+.history-table td:nth-child(5) {
+    min-width: 170px;
+}
+
+
+/* QUANTITY USED */
+
+.history-table th:nth-child(6),
+.history-table td:nth-child(6) {
+    min-width: 140px;
+}
+
+
+/* TOTAL AMOUNT */
+
+.history-table th:nth-child(7),
+.history-table td:nth-child(7) {
+    min-width: 140px;
+}
+
+
+/* =========================================
    AMOUNT
 ========================================= */
 
 .amount {
     color: var(--brown);
+
     font-weight: 700;
+
     white-space: nowrap;
 }
 
@@ -276,7 +451,10 @@ body {
 
 .quantity {
     color: var(--brown-dark);
+
     font-weight: 700;
+
+    white-space: nowrap;
 }
 
 
@@ -286,8 +464,11 @@ body {
 
 .no-history {
     text-align: center;
+
     padding: 35px 20px;
+
     color: var(--gray);
+
     font-size: 11px;
 }
 
@@ -299,15 +480,23 @@ body {
 footer {
     width: 100%;
     height: 55px;
+
     padding: 0 55px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: var(--white);
+
     border-top: 1px solid var(--cream-dark);
+
     color: #aaa098;
+
     font-size: 10px;
+
     flex-shrink: 0;
+
     position: relative;
     z-index: 10;
 }
@@ -327,8 +516,12 @@ footer {
         padding: 40px 30px;
     }
 
+    .history-table-container {
+        max-height: 450px;
+    }
+
     .history-table {
-        min-width: 600px;
+        min-width: 900px;
     }
 
     .history-table th,
@@ -353,9 +546,28 @@ footer {
         padding: 0 20px;
     }
 
+
+    /* =====================================
+       BRAND
+    ===================================== */
+
     .brand {
-        font-size: 11px;
+        gap: 8px;
     }
+
+    .brand-mark {
+        font-size: 22px;
+    }
+
+    .brand-name {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+
+    /* =====================================
+       NAV
+    ===================================== */
 
     .nav-actions {
         gap: 8px;
@@ -364,11 +576,26 @@ footer {
     .back-link {
         height: 36px;
         padding: 0 13px;
+
+        font-size: 11px;
     }
+
+
+    /* =====================================
+       MAIN
+    ===================================== */
 
     .container {
         padding: 35px 20px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
     }
+
+
+    /* =====================================
+       HEADER
+    ===================================== */
 
     .page-header {
         margin-bottom: 25px;
@@ -378,52 +605,178 @@ footer {
         font-size: 40px;
     }
 
+
+    /* =====================================
+       MOBILE TABLE CONTAINER
+    ===================================== */
+
     .history-table-container {
+        width: 100%;
+        max-width: 100%;
+
+        /*
+           This controls the visible table height.
+           More rows = vertical scrolling.
+        */
+        height: 400px;
+        max-height: 400px;
+
+        /*
+           Enable both directions.
+        */
+        overflow-x: auto;
+        overflow-y: auto;
+
         border-radius: 14px;
+
+        -webkit-overflow-scrolling: touch;
+
+        /*
+           Allows natural touch scrolling.
+        */
+        touch-action: auto;
     }
+
+
+    /* =====================================
+       MOBILE TABLE
+    ===================================== */
 
     .history-table {
-        min-width: 600px;
+
+        /*
+           The table is intentionally wider
+           than the phone so horizontal
+           scrolling is available.
+        */
+        width: 900px;
+        min-width: 900px;
+
+        table-layout: auto;
     }
+
+
+    /* =====================================
+       MOBILE HEADER
+    ===================================== */
 
     .history-table th {
-        padding: 11px 10px;
+        padding: 11px 12px;
+
         font-size: 8px;
+
+        white-space: nowrap;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 2;
     }
+
+
+    /* =====================================
+       MOBILE DATA
+    ===================================== */
 
     .history-table td {
-        padding: 12px 10px;
+        padding: 12px;
+
         font-size: 10px;
+
+        /*
+           Prevent data from overlapping
+           or wrapping into another column.
+        */
+        white-space: nowrap;
     }
 
-.brand {
-    display: flex;
 
-    align-items: center;
+    /* =====================================
+       MOBILE COLUMN WIDTHS
+    ===================================== */
 
-    gap: 10px;
-}
+    /* ID */
 
-.brand-mark {
-    color: var(--brown);
+    .history-table th:nth-child(1),
+    .history-table td:nth-child(1) {
+        min-width: 60px;
+    }
 
-    font-size: 25px;
 
-    line-height: 1;
-}
+    /* DATE & TIME */
 
-.brand-name {
-    color: var(--brown-dark);
+    .history-table th:nth-child(2),
+    .history-table td:nth-child(2) {
+        min-width: 155px;
+    }
 
-    font-size: 13px;
 
-    font-weight: 700;
+    /* CUSTOMER NAME */
 
-    letter-spacing: 2px;
-}
+    .history-table th:nth-child(3),
+    .history-table td:nth-child(3) {
+        min-width: 170px;
+    }
+
+
+    /* SERVICE */
+
+    .history-table th:nth-child(4),
+    .history-table td:nth-child(4) {
+        min-width: 150px;
+    }
+
+
+    /* MATERIAL */
+
+    .history-table th:nth-child(5),
+    .history-table td:nth-child(5) {
+        min-width: 170px;
+    }
+
+
+    /* QUANTITY */
+
+    .history-table th:nth-child(6),
+    .history-table td:nth-child(6) {
+        min-width: 140px;
+    }
+
+
+    /* TOTAL AMOUNT */
+
+    .history-table th:nth-child(7),
+    .history-table td:nth-child(7) {
+        min-width: 140px;
+    }
+
+
+    /* =====================================
+       MOBILE SCROLLBAR
+    ===================================== */
+
+    .history-table-container::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .history-table-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .history-table-container::-webkit-scrollbar-thumb {
+        background: var(--brown-light);
+        border-radius: 10px;
+    }
+
+
+    /* =====================================
+       FOOTER
+    ===================================== */
 
     footer {
         height: 50px;
         padding: 0 20px;
     }
 }
+

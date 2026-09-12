@@ -1,3 +1,4 @@
+
 /* =========================================
    COLORS
 ========================================= */
@@ -13,6 +14,7 @@
     --border: #ddd5cc;
 }
 
+
 /* =========================================
    RESET
 ========================================= */
@@ -22,6 +24,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 
 /* =========================================
    HTML + BODY
@@ -40,6 +43,7 @@ body {
     color: var(--brown-dark);
 }
 
+
 /* =========================================
    FINANCE PAGE
 ========================================= */
@@ -47,10 +51,13 @@ body {
 .finance-page {
     width: 100%;
     height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     overflow: hidden;
 }
+
 
 /* =========================================
    HEADER / NAVBAR
@@ -59,16 +66,22 @@ body {
 .navbar {
     width: 100%;
     height: 80px;
+
     padding: 0 55px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: var(--white);
     border-bottom: 1px solid var(--cream-dark);
+
     flex-shrink: 0;
+
     position: relative;
     z-index: 10;
 }
+
 
 /* =========================================
    BRAND
@@ -93,6 +106,7 @@ body {
     letter-spacing: 2px;
 }
 
+
 /* =========================================
    NAV RIGHT
 ========================================= */
@@ -107,6 +121,7 @@ body {
     display: flex;
     align-items: center;
     gap: 9px;
+
     color: var(--gray);
     font-size: 13px;
 }
@@ -114,9 +129,12 @@ body {
 .user-dot {
     width: 9px;
     height: 9px;
+
     border-radius: 50%;
+
     background: #9c8979;
 }
+
 
 /* =========================================
    LOGOUT
@@ -126,15 +144,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     height: 40px;
     padding: 0 18px;
+
     border: 1px solid var(--border);
     border-radius: 9px;
+
     background: var(--white);
     color: var(--brown);
+
     font-size: 12px;
     font-weight: 600;
+
     text-decoration: none;
+
     transition: all 0.2s ease;
 }
 
@@ -144,19 +168,27 @@ body {
     border-color: var(--brown);
 }
 
+
 /* =========================================
    CONTENT
 ========================================= */
 
 .finance-content {
     flex: 1;
+
     width: 100%;
     max-width: 1200px;
+
     margin: 0 auto;
+
     padding: 45px 55px;
+
     overflow-y: auto;
     overflow-x: hidden;
+
+    min-width: 0;
 }
+
 
 /* =========================================
    SCROLLBAR
@@ -179,6 +211,7 @@ body {
     background: var(--brown);
 }
 
+
 /* =========================================
    PAGE HEADER
 ========================================= */
@@ -189,26 +222,37 @@ body {
 
 .page-label {
     display: inline-block;
+
     color: var(--brown-light);
+
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: 2px;
+
     margin-bottom: 12px;
 }
 
 .page-header h1 {
     font-family: "Playfair Display", serif;
+
     font-size: clamp(40px, 5vw, 55px);
+
     line-height: 1;
+
     color: var(--brown-dark);
+
     margin-bottom: 12px;
 }
 
 .page-header p {
     color: var(--gray);
+
     font-size: 13px;
+
     line-height: 1.6;
 }
+
 
 /* =========================================
    FINANCE GRID
@@ -216,10 +260,14 @@ body {
 
 .finance-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 18px;
+
     margin-bottom: 20px;
 }
+
 
 /* =========================================
    FINANCE CARD
@@ -227,10 +275,15 @@ body {
 
 .finance-card {
     background: var(--white);
+
     border: 1px solid var(--cream-dark);
     border-radius: 18px;
+
     padding: 25px;
+
+    min-width: 0;
 }
+
 
 /* =========================================
    CARD HEADER
@@ -240,37 +293,51 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     margin-bottom: 25px;
 }
 
 .section-label {
     display: block;
+
     color: var(--brown-light);
+
     font-size: 9px;
     font-weight: 700;
+
     letter-spacing: 1.5px;
+
     margin-bottom: 6px;
 }
 
 .card-header h2 {
     font-family: "Playfair Display", serif;
+
     color: var(--brown-dark);
+
     font-size: 23px;
+
     line-height: 1.2;
 }
 
 .card-icon {
     width: 43px;
     height: 43px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 12px;
+
     background: var(--cream);
     color: var(--brown);
+
     font-size: 21px;
+
     flex-shrink: 0;
 }
+
 
 /* =========================================
    EXPENSE FORM
@@ -278,8 +345,11 @@ body {
 
 .expense-form {
     display: grid;
+
     grid-template-columns: 1.5fr 1fr 1fr;
+
     gap: 10px;
+
     margin-bottom: 30px;
 }
 
@@ -290,23 +360,32 @@ body {
 
 .form-group label {
     color: var(--brown-light);
+
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 1px;
+
     margin-bottom: 7px;
 }
 
 .form-group input {
     width: 100%;
     height: 42px;
+
     padding: 0 12px;
+
     border: 1px solid var(--border);
     border-radius: 8px;
+
     background: var(--cream);
     color: var(--brown-dark);
+
     font-family: "DM Sans", sans-serif;
     font-size: 12px;
+
     outline: none;
+
     transition: all 0.2s ease;
 }
 
@@ -319,28 +398,37 @@ body {
     color: #aaa098;
 }
 
+
 /* =========================================
    ADD EXPENSE BUTTON
 ========================================= */
 
 .add-button {
     grid-column: 1 / -1;
+
     width: 100%;
     height: 42px;
+
     border: none;
     border-radius: 8px;
+
     background: var(--brown);
     color: var(--white);
+
     font-family: "DM Sans", sans-serif;
+
     font-size: 12px;
     font-weight: 600;
+
     cursor: pointer;
+
     transition: all 0.2s ease;
 }
 
 .add-button:hover {
     background: var(--brown-dark);
 }
+
 
 /* =========================================
    INCOME DESCRIPTION
@@ -349,10 +437,14 @@ body {
 .income-description {
     margin-top: -10px;
     margin-bottom: 25px;
+
     color: var(--gray);
+
     font-size: 11px;
+
     line-height: 1.6;
 }
+
 
 /* =========================================
    RECORDS SECTION
@@ -360,15 +452,20 @@ body {
 
 .records-section {
     width: 100%;
+    min-width: 0;
 }
 
 .records-title {
     color: var(--brown-light);
+
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 1px;
+
     margin-bottom: 10px;
 }
+
 
 /* =========================================
    TABLE CONTAINER
@@ -376,8 +473,52 @@ body {
 
 .table-container {
     width: 100%;
+    max-width: 100%;
+
+    background: var(--white);
+
+    border: 1px solid var(--cream-dark);
+    border-radius: 14px;
+
+    /*
+       ENABLE BOTH SCROLL DIRECTIONS
+    */
     overflow-x: auto;
+    overflow-y: auto;
+
+    /*
+       Desktop table height
+    */
+    max-height: 400px;
+
+    min-width: 0;
+
+    -webkit-overflow-scrolling: touch;
 }
+
+
+/* =========================================
+   TABLE SCROLLBAR
+========================================= */
+
+.table-container::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--brown-light);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--brown);
+}
+
 
 /* =========================================
    TABLE
@@ -385,31 +526,81 @@ body {
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    min-width: 430px;
+
+    /*
+       Prevent columns from becoming
+       too narrow and overlapping.
+    */
+    min-width: 650px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: auto;
+
+    background: var(--white);
 }
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
 
 thead {
     border-bottom: 1px solid var(--cream-dark);
 }
 
 th {
-    padding: 10px 8px;
+    padding: 11px 12px;
+
     text-align: left;
+
     color: var(--brown-light);
+
     font-size: 9px;
     font-weight: 700;
+
     letter-spacing: 1px;
+
     text-transform: uppercase;
+
     white-space: nowrap;
+
+    /*
+       Keep header visible when scrolling
+       vertically.
+    */
+    position: sticky;
+    top: 0;
+
+    background: var(--white);
+
+    z-index: 2;
+
+    border-bottom: 1px solid var(--cream-dark);
 }
 
+
+/* =========================================
+   TABLE DATA
+========================================= */
+
 td {
-    padding: 12px 8px;
+    padding: 12px;
+
     border-bottom: 1px solid #f0ece7;
+
     color: var(--brown-dark);
+
     font-size: 11px;
+
     vertical-align: middle;
+
+    /*
+       Prevent text from wrapping into
+       neighboring columns.
+    */
+    white-space: nowrap;
 }
 
 tbody tr:hover {
@@ -420,21 +611,71 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
+
+/* =========================================
+   COLUMN WIDTHS
+========================================= */
+
+/* ID */
+
+th:nth-child(1),
+td:nth-child(1) {
+    min-width: 55px;
+}
+
+
+/* EXPENSE / DESCRIPTION */
+
+th:nth-child(2),
+td:nth-child(2) {
+    min-width: 180px;
+}
+
+
+/* AMOUNT */
+
+th:nth-child(3),
+td:nth-child(3) {
+    min-width: 110px;
+}
+
+
+/* DATE */
+
+th:nth-child(4),
+td:nth-child(4) {
+    min-width: 120px;
+}
+
+
+/* ACTION */
+
+th:nth-child(5),
+td:nth-child(5) {
+    min-width: 140px;
+}
+
+
 /* =========================================
    AMOUNT
 ========================================= */
 
 .amount {
     color: var(--brown);
+
     font-weight: 700;
+
     white-space: nowrap;
 }
 
 .income-amount {
     color: #5d765e;
+
     font-weight: 700;
+
     white-space: nowrap;
 }
+
 
 /* =========================================
    EMPTY RECORD
@@ -442,10 +683,14 @@ tbody tr:last-child td {
 
 .empty {
     padding: 25px 10px !important;
+
     text-align: center !important;
+
     color: var(--gray) !important;
+
     font-size: 11px !important;
 }
+
 
 /* =========================================
    ACTIONS
@@ -453,9 +698,14 @@ tbody tr:last-child td {
 
 .actions {
     display: flex;
+
     align-items: center;
+
     gap: 6px;
+
+    white-space: nowrap;
 }
+
 
 /* =========================================
    EDIT BUTTON
@@ -463,25 +713,36 @@ tbody tr:last-child td {
 
 .edit-button {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     height: 30px;
+
     padding: 0 10px;
+
     border: 1px solid var(--border);
     border-radius: 7px;
+
     background: var(--white);
     color: var(--brown);
+
     text-decoration: none;
+
     font-size: 10px;
     font-weight: 600;
+
     transition: all 0.2s ease;
 }
 
 .edit-button:hover {
     background: var(--brown);
+
     color: var(--white);
+
     border-color: var(--brown);
 }
+
 
 /* =========================================
    DELETE BUTTON
@@ -489,23 +750,33 @@ tbody tr:last-child td {
 
 .delete-button {
     height: 30px;
+
     padding: 0 10px;
+
     border: 1px solid var(--border);
     border-radius: 7px;
+
     background: var(--white);
     color: #8a5d50;
+
     font-family: "DM Sans", sans-serif;
+
     font-size: 10px;
     font-weight: 600;
+
     cursor: pointer;
+
     transition: all 0.2s ease;
 }
 
 .delete-button:hover {
     background: #8a5d50;
+
     color: var(--white);
+
     border-color: #8a5d50;
 }
+
 
 /* =========================================
    SECTION TOTAL
@@ -513,25 +784,34 @@ tbody tr:last-child td {
 
 .section-total {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
     margin-top: 18px;
+
     padding-top: 15px;
+
     border-top: 1px solid var(--cream-dark);
 }
 
 .section-total span {
     color: var(--brown-light);
+
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 1px;
 }
 
 .section-total strong {
     color: var(--brown-dark);
+
     font-family: "Playfair Display", serif;
+
     font-size: 20px;
 }
+
 
 /* =========================================
    SUMMARY GRID
@@ -539,10 +819,14 @@ tbody tr:last-child td {
 
 .summary-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
+
     margin-bottom: 25px;
 }
+
 
 /* =========================================
    SUMMARY CARD
@@ -550,10 +834,14 @@ tbody tr:last-child td {
 
 .summary-card {
     min-height: 115px;
+
     padding: 22px 25px;
+
     background: var(--white);
+
     border: 1px solid var(--cream-dark);
     border-radius: 17px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -561,17 +849,23 @@ tbody tr:last-child td {
 
 .summary-label {
     color: var(--brown-light);
+
     font-size: 9px;
     font-weight: 700;
+
     letter-spacing: 1.5px;
+
     margin-bottom: 7px;
 }
 
 .summary-card strong {
     font-family: "Playfair Display", serif;
+
     color: var(--brown-dark);
+
     font-size: 27px;
 }
+
 
 /* =========================================
    NET INCOME
@@ -579,6 +873,7 @@ tbody tr:last-child td {
 
 .summary-card.net-income {
     background: var(--brown);
+
     border-color: var(--brown);
 }
 
@@ -590,38 +885,52 @@ tbody tr:last-child td {
     color: var(--white);
 }
 
+
 /* =========================================
    BACK BUTTON
 ========================================= */
 
 .back-container {
     position: absolute;
+
     top: 25px;
     right: 55px;
+
     margin: 0;
 }
 
 .back-button {
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     height: 40px;
+
     padding: 0 18px;
+
     border: 1px solid var(--border);
     border-radius: 9px;
+
     background: var(--white);
     color: var(--brown);
+
     font-size: 12px;
     font-weight: 600;
+
     text-decoration: none;
+
     transition: all 0.2s ease;
 }
 
 .back-button:hover {
     background: var(--brown);
+
     color: var(--white);
+
     border-color: var(--brown);
 }
+
 
 /* =========================================
    FOOTER
@@ -630,18 +939,29 @@ tbody tr:last-child td {
 footer {
     width: 100%;
     height: 55px;
+
     padding: 0 55px;
+
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
     background: var(--white);
+
     border-top: 1px solid var(--cream-dark);
+
     color: #aaa098;
+
     font-size: 10px;
+
     flex-shrink: 0;
+
     position: relative;
+
     z-index: 10;
 }
+
 
 /* =========================================
    TABLET
@@ -673,10 +993,19 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
+    .table-container {
+        max-height: 400px;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
     footer {
         padding: 0 30px;
     }
 }
+
 
 /* =========================================
    MOBILE
@@ -686,12 +1015,19 @@ footer {
 
     .navbar {
         height: 70px;
+
         padding: 0 20px;
     }
+
+
+    /* BRAND */
 
     .brand-name {
         font-size: 11px;
     }
+
+
+    /* NAV */
 
     .nav-right {
         gap: 10px;
@@ -703,12 +1039,22 @@ footer {
 
     .logout-button {
         height: 36px;
+
         padding: 0 13px;
     }
 
+
+    /* CONTENT */
+
     .finance-content {
         padding: 35px 20px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
     }
+
+
+    /* HEADER */
 
     .page-header {
         margin-bottom: 25px;
@@ -718,8 +1064,12 @@ footer {
         font-size: 40px;
     }
 
+
+    /* FINANCE GRID */
+
     .finance-grid {
         grid-template-columns: 1fr;
+
         gap: 12px;
     }
 
@@ -727,12 +1077,19 @@ footer {
         padding: 20px;
     }
 
+
+    /* CARD HEADER */
+
     .card-header h2 {
         font-size: 21px;
     }
 
+
+    /* EXPENSE FORM */
+
     .expense-form {
         grid-template-columns: 1fr;
+
         gap: 10px;
     }
 
@@ -744,14 +1101,21 @@ footer {
         grid-column: auto;
     }
 
+
+    /* SUMMARY */
+
     .summary-grid {
         grid-template-columns: 1fr;
+
         gap: 12px;
     }
 
     .summary-card {
         min-height: 100px;
     }
+
+
+    /* BACK BUTTON */
 
     .back-container {
         margin-top: 5px;
@@ -761,8 +1125,159 @@ footer {
         width: 100%;
     }
 
+
+    /* =====================================
+       MOBILE TABLE CONTAINER
+    ===================================== */
+
+    .table-container {
+        width: 100%;
+        max-width: 100%;
+
+        /*
+           Fixed visible table height.
+           More records = vertical scrolling.
+        */
+        height: 350px;
+        max-height: 350px;
+
+        /*
+           Enable horizontal + vertical
+           scrolling.
+        */
+        overflow-x: auto;
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+        border-radius: 12px;
+
+        touch-action: auto;
+    }
+
+
+    /* =====================================
+       MOBILE TABLE
+    ===================================== */
+
+    table {
+        /*
+           Make table wider than phone.
+           User can swipe horizontally.
+        */
+        width: 700px;
+        min-width: 700px;
+
+        table-layout: auto;
+    }
+
+
+    /* =====================================
+       MOBILE TABLE HEADER
+    ===================================== */
+
+    th {
+        padding: 11px 12px;
+
+        font-size: 8px;
+
+        white-space: nowrap;
+
+        position: sticky;
+        top: 0;
+
+        background: var(--white);
+
+        z-index: 2;
+    }
+
+
+    /* =====================================
+       MOBILE TABLE DATA
+    ===================================== */
+
+    td {
+        padding: 12px;
+
+        font-size: 10px;
+
+        /*
+           Prevent overlapping/wrapping.
+        */
+        white-space: nowrap;
+    }
+
+
+    /* =====================================
+       MOBILE COLUMN WIDTHS
+    ===================================== */
+
+    /* ID */
+
+    th:nth-child(1),
+    td:nth-child(1) {
+        min-width: 60px;
+    }
+
+
+    /* DESCRIPTION */
+
+    th:nth-child(2),
+    td:nth-child(2) {
+        min-width: 190px;
+    }
+
+
+    /* AMOUNT */
+
+    th:nth-child(3),
+    td:nth-child(3) {
+        min-width: 120px;
+    }
+
+
+    /* DATE */
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        min-width: 130px;
+    }
+
+
+    /* ACTIONS */
+
+    th:nth-child(5),
+    td:nth-child(5) {
+        min-width: 150px;
+    }
+
+
+    /* =====================================
+       MOBILE SCROLLBAR
+    ===================================== */
+
+    .table-container::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background: var(--brown-light);
+
+        border-radius: 10px;
+    }
+
+
+    /* FOOTER */
+
     footer {
         height: 50px;
+
         padding: 0 20px;
     }
 }
+
