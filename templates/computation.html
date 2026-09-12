@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Costing [Inked with C & H]</title>
+
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('static', filename='log.ico') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='calculator.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <span class="brand-mark">✦</span>
+
+            <span class="brand-name">
+                INKED WITH C&H
+            </span>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <div class="user-info">
+
+                <span class="user-dot"></span>
+
+                <span>
+                    {{ username }}
+                </span>
+
+            </div>
+
+
+            <a href="{{ url_for('dashboard') }}"
+               class="calculator-button active">
+                Dashboard
+            </a>
+
+
+            <a href="{{ url_for('logout') }}"
+               class="logout-button">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN CONTENT -->
+    <main class="calculator-content">
+
+
+        <div class="page-header">
+
+            <span class="page-label">
+                PRODUCT COSTING
+            </span>
+
+            <h1>
+                Calculator
+            </h1>
+
+            <p>
+                Calculate your material cost, markup, and estimated profit.
+            </p>
+
+        </div>
+
+
+
+        <!-- CALCULATOR CARD -->
+        <div class="calculator-card">
+
+
+            <div class="table-wrapper">
+
+                <table id="costTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>MATERIAL</th>
+                            <th>COST PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>SELLING PRICE (EACH)</th>
+                            <th>SP × QTY OF FINISHED PRODUCT</th>
+                            <th>ACTION</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="materialRows">
+
+
+                        <!-- FIRST ROW -->
+                        <tr class="material-row">
+
+                            <!-- MATERIAL -->
+                            <td>
+
+                                <input
+                                    type="text"
+                                    name="material[]"
+                                    placeholder="e.g. A5 Bond Paper"
+                                >
+
+                            </td>
+
+
+                            <!-- COST PRICE -->
+                            <td>
+
+                                <div class="input-with-symbol">
+
+                                    <span>₱</span>
+
+                                    <input
+                                        type="number"
+                                        name="cost[]"
+                                        placeholder="0.00"
+                                        step="0.01"
+                                        min="0"
+                                    >
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- QUANTITY -->
+                            <td>
+
+                                <input
+                                    type="number"
+                                    name="quantity[]"
+                                    placeholder="0"
+                                    step="1"
+                                    min="1"
+                                >
+
+                            </td>
+
+
+                            <!-- SELLING PRICE -->
+                            <td>
+
+                                <div class="input-with-symbol">
+
+                                    <span>₱</span>
+
+                                    <input
+                                        type="text"
+                                        class="selling-price"
+                                        name="selling_price[]"
+                                        placeholder="0.00"
+                                        readonly
+                                    >
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- OPTIONAL FINISHED PRODUCT QTY -->
+                            <td>
+
+                                <input
+                                    type="number"
+                                    class="finished-product-qty"
+                                    name="finished_product_qty[]"
+                                    placeholder="Optional"
+                                    step="1"
+                                    min="1"
+                                >
+
+                            </td>
+
+
+                            <!-- ACTION -->
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="delete-button"
+                                    onclick="removeRow(this)"
+                                >
+                                    ×
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- ADD COLUMN BUTTON -->
+            <div class="add-row-container">
+
+                <button
+                    type="button"
+                    class="add-column-button"
+                    onclick="addRow()"
+                >
+
+                    <span>+</span>
+
+                    Add Column
+
+                </button>
+
+            </div>
+
+
+
+            <!-- SUMMARY -->
+            <div class="cost-summary">
+
+    <!-- TOTAL MATERIAL COST -->
+    <div class="summary-item">
+
+        <span class="summary-label">
+            TOTAL MATERIAL COST
+        </span>
+
+        <strong id="totalCost">
+            ₱0.00
+        </strong>
+
+    </div>
+
+
+    <!-- MARKUP -->
+    <div class="summary-item">
+
+        <span class="summary-label">
+            MARKUP %
+        </span>
+
+        <select id="totalMarkup" class="summary-markup">
+
+            <option value="20">20%</option>
+            <option value="25">25%</option>
+            <option value="30">30%</option>
+            <option value="35">35%</option>
+            <option value="40">40%</option>
+            <option value="45">45%</option>
+            <option value="50" selected>50%</option>
+            <option value="55">55%</option>
+            <option value="60">60%</option>
+            <option value="65">65%</option>
+            <option value="70">70%</option>
+            <option value="75">75%</option>
+            <option value="80">80%</option>
+            <option value="85">85%</option>
+            <option value="90">90%</option>
+            <option value="95">95%</option>
+            <option value="100">100%</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- ESTIMATED PROFIT -->
+    <div class="summary-item profit">
+
+        <span class="summary-label">
+            ESTIMATED PROFIT
+        </span>
+
+        <strong id="totalProfit">
+            ₱0.00
+        </strong>
+
+    </div>
+
+
+    <!-- TOTAL PRICE -->
+    <div class="summary-item total-price">
+
+        <span class="summary-label">
+            FINAL PRICE
+        </span>
+
+        <strong id="totalPrice">
+            ₱0.00
+        </strong>
+
+    </div>
+
+</div>
+
+
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+
+        // ==========================================
+        // CALCULATE INDIVIDUAL ROW
+        // ==========================================
+
+        function calculateRow(row) {
+
+            const costInput =
+                row.querySelector('input[name="cost[]"]');
+
+            const quantityInput =
+                row.querySelector('input[name="quantity[]"]');
+
+            const sellingInput =
+                row.querySelector('input[name="selling_price[]"]');
+
+
+            const cost =
+                parseFloat(costInput.value) || 0;
+
+            const quantity =
+                parseFloat(quantityInput.value) || 0;
+
+
+            if (quantity <= 0 || cost <= 0) {
+
+                sellingInput.value = "";
+
+                return;
+
+            }
+
+
+            // Cost per piece
+            const costEach =
+                cost / quantity;
+
+
+            // Display cost per piece
+            sellingInput.value =
+                costEach.toFixed(2);
+
+        }
+
+
+
+        // ==========================================
+        // CALCULATE TOTALS
+        // ==========================================
+
+        function calculateTotals() {
+
+    const rows =
+        document.querySelectorAll(".material-row");
+
+    let totalMaterialCost = 0;
+
+
+    rows.forEach(row => {
+
+        const sellingPrice =
+            parseFloat(
+                row.querySelector(
+                    'input[name="selling_price[]"]'
+                ).value
+            ) || 0;
+
+
+        const finishedProductQty =
+            parseFloat(
+                row.querySelector(
+                    'input[name="finished_product_qty[]"]'
+                ).value
+            ) || 0;
+
+
+        let rowTotal =
+            sellingPrice;
+
+
+        // Optional multiplier
+        if (finishedProductQty > 0) {
+
+            rowTotal =
+                sellingPrice * finishedProductQty;
+
+        }
+
+
+        totalMaterialCost += rowTotal;
+
+    });
+
+
+    const markup =
+        parseFloat(
+            document.getElementById("totalMarkup").value
+        ) || 0;
+
+
+    // Calculate estimated profit
+    const estimatedProfit =
+        totalMaterialCost * (markup / 100);
+
+
+    // Calculate total price
+    const totalPrice =
+        totalMaterialCost + estimatedProfit;
+
+
+    // Display total material cost
+    document.getElementById("totalCost")
+        .textContent =
+        "₱" + totalMaterialCost.toFixed(2);
+
+
+    // Display estimated profit
+    document.getElementById("totalProfit")
+        .textContent =
+        "₱" + estimatedProfit.toFixed(2);
+
+
+    // Display total price
+    document.getElementById("totalPrice")
+        .textContent =
+        "₱" + totalPrice.toFixed(2);
+
+}
+
+
+
+        document.getElementById("totalMarkup")
+            .addEventListener(
+                "change",
+                calculateTotals
+            );
+
+
+
+        // ==========================================
+        // ADD NEW MATERIAL ROW
+        // ==========================================
+
+        function addRow() {
+
+            const tableBody =
+                document.getElementById("materialRows");
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.classList.add("material-row");
+
+
+            row.innerHTML = `
+
+                <!-- MATERIAL -->
+                <td>
+
+                    <input
+                        type="text"
+                        name="material[]"
+                        placeholder="e.g. A5 Bond Paper"
+                    >
+
+                </td>
+
+
+                <!-- COST PRICE -->
+                <td>
+
+                    <div class="input-with-symbol">
+
+                        <span>₱</span>
+
+                        <input
+                            type="number"
+                            name="cost[]"
+                            placeholder="0.00"
+                            step="0.01"
+                            min="0"
+                        >
+
+                    </div>
+
+                </td>
+
+
+                <!-- QUANTITY -->
+                <td>
+
+                    <input
+                        type="number"
+                        name="quantity[]"
+                        placeholder="0"
+                        step="1"
+                        min="1"
+                    >
+
+                </td>
+
+
+                <!-- SELLING PRICE -->
+                <td>
+
+                    <div class="input-with-symbol">
+
+                        <span>₱</span>
+
+                        <input
+                            type="text"
+                            class="selling-price"
+                            name="selling_price[]"
+                            placeholder="0.00"
+                            readonly
+                        >
+
+                    </div>
+
+                </td>
+
+
+                <!-- OPTIONAL FINISHED PRODUCT QTY -->
+                <td>
+
+                    <input
+                        type="number"
+                        class="finished-product-qty"
+                        name="finished_product_qty[]"
+                        placeholder="Optional"
+                        step="1"
+                        min="1"
+                    >
+
+                </td>
+
+
+                <!-- ACTION -->
+                <td>
+
+                    <button
+                        type="button"
+                        class="delete-button"
+                        onclick="removeRow(this)"
+                    >
+                        ×
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(row);
+
+        }
+
+
+
+        // ==========================================
+        // REMOVE ROW
+        // ==========================================
+
+        function removeRow(button) {
+
+            const rows =
+                document.querySelectorAll(
+                    ".material-row"
+                );
+
+
+            // Keep at least one row
+            if (rows.length <= 1) {
+
+                return;
+
+            }
+
+
+            button
+                .closest("tr")
+                .remove();
+
+
+            calculateTotals();
+
+        }
+
+
+
+        // ==========================================
+        // INPUT EVENT
+        // ==========================================
+
+        document.addEventListener(
+            "input",
+            function(event) {
+
+
+                const row =
+                    event.target.closest(
+                        ".material-row"
+                    );
+
+
+                if (!row) {
+
+                    return;
+
+                }
+
+
+                // Recalculate selling price
+                // when cost or quantity changes
+                if (
+                    event.target.matches(
+                        'input[name="cost[]"], input[name="quantity[]"]'
+                    )
+                ) {
+
+                    calculateRow(row);
+
+                }
+
+
+                // Recalculate totals for every input
+                calculateTotals();
+
+            }
+        );
+
+
+
+        // ==========================================
+        // DROPDOWN CHANGE EVENT
+        // ==========================================
+
+        document.addEventListener(
+            "change",
+            function(event) {
+
+
+                const row =
+                    event.target.closest(
+                        ".material-row"
+                    );
+
+
+                if (!row) {
+
+                    return;
+
+                }
+
+
+                calculateRow(row);
+
+                calculateTotals();
+
+            }
+        );
+
+
+
+        // ==========================================
+        // INITIAL CALCULATION
+        // ==========================================
+
+        calculateTotals();
+
+
+    </script>
+
+
+</body>
+
+</html>

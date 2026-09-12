@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard [Inked with C & H]</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='dashboard.css') }}"
+    >
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='log.ico') }}">
+
+</head>
+
+
+<body>
+
+    <main class="dashboard-page">
+
+
+        <!-- =================================
+             NAVIGATION
+        ================================== -->
+
+        <nav class="navbar">
+
+            <div class="brand">
+
+                <span class="brand-mark">
+                    ✦
+                </span>
+
+                <span class="brand-name">
+                    INKED WITH C&H
+                </span>
+
+            </div>
+
+
+            <div class="nav-right">
+
+    <div class="user-info">
+
+        <span class="user-dot"></span>
+
+        <span>
+            {{ username }}
+        </span>
+
+    </div>
+
+
+    <a
+        href="{{ url_for('calculator') }}"
+        class="calculator-button"
+    >
+        Calculator
+    </a>
+
+
+    <a
+        href="{{ url_for('logout') }}"
+        class="logout-button"
+    >
+        Logout
+    </a>
+
+</div>
+
+        </nav>
+
+
+        <!-- =================================
+             DASHBOARD CONTENT
+        ================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- Welcome -->
+
+            <div class="welcome-section">
+
+                <div>
+
+                    <span class="welcome-label">
+                        ✦ DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome,
+                        <span>{{ username }}</span>.
+                    </h1>
+
+                    <p>
+                        It's good to see you again.
+                        Here's an overview of your account.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 DASHBOARD CARDS
+            ================================== -->
+
+            <!-- =================================
+     DASHBOARD OPTIONS
+================================== -->
+
+<div class="dashboard-grid">
+
+    <!-- View Stocks -->
+
+    <a href="{{ url_for('stocks') }}" class="dashboard-card">
+
+        <div class="card-icon">
+            ◇
+        </div>
+
+        <div class="card-content">
+
+            <span class="card-label">
+                INVENTORY
+            </span>
+
+            <h2>
+                View Stocks
+            </h2>
+
+            <p>
+                Check available materials,
+                supplies, and current stock levels.
+            </p>
+
+        </div>
+
+        <span class="card-arrow">
+            →
+        </span>
+
+    </a>
+
+
+    <!-- View History -->
+
+    <a href="{{ url_for('history') }}" class="dashboard-card">
+
+        <div class="card-icon">
+            ◎
+        </div>
+
+        <div class="card-content">
+
+            <span class="card-label">
+                RECORDS
+            </span>
+
+            <h2>
+                View History
+            </h2>
+
+            <p>
+                View previous transactions,
+                activities, and records.
+            </p>
+
+        </div>
+
+        <span class="card-arrow">
+            →
+        </span>
+
+    </a>
+
+
+    <!-- Salary and Expenses -->
+
+    <a href="{{ url_for('income_expenses') }}" class="dashboard-card">
+
+        <div class="card-icon">
+            ₱
+        </div>
+
+        <div class="card-content">
+
+            <span class="card-label">
+                FINANCES
+            </span>
+
+            <h2>
+                View Income & Expenses
+            </h2>
+
+            <p>
+                Monitor employee salaries,
+                expenses, and financial records.
+            </p>
+
+        </div>
+
+        <span class="card-arrow">
+            →
+        </span>
+
+    </a>
+
+</div>
+
+
+            <!-- =================================
+                 BOTTOM MESSAGE
+            ================================== -->
+
+            
+
+
+        </section>
+
+
+        <!-- =================================
+             FOOTER
+        ================================== -->
+
+        <footer>
+
+            <span>
+                © 2026 Your Brand
+            </span>
+
+            <span>
+                Made with simplicity.
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</body>
+
+</html>

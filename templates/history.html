@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer History [Inked with C & H]</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='log.ico') }}">
+    <style>
+        /* =========================================
+   COLORS
+========================================= */
+
+:root {
+    --brown-dark: #403025;
+    --brown: #5a4637;
+    --brown-light: #806f61;
+    --cream: #faf8f4;
+    --cream-dark: #eee8df;
+    --white: #ffffff;
+    --gray: #8c837b;
+    --border: #ddd5cc;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HTML + BODY
+========================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--brown-dark);
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.history-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    padding: 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-bottom: 1px solid var(--cream-dark);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+    color: var(--brown-dark);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   NAV ACTIONS
+========================================= */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    background: var(--brown);
+    color: var(--white);
+    border-color: var(--brown);
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 55px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: var(--brown-light);
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: var(--brown);
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header span {
+    display: inline-block;
+    color: var(--brown-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.page-header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5vw, 55px);
+    line-height: 1;
+    color: var(--brown-dark);
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   HISTORY TABLE CONTAINER
+========================================= */
+
+.history-table-container {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+/* =========================================
+   HISTORY TABLE
+========================================= */
+
+.history-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.history-table thead {
+    border-bottom: 1px solid var(--cream-dark);
+}
+
+.history-table th {
+    padding: 13px 16px;
+    text-align: left;
+    color: var(--brown-light);
+    background: var(--white);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE DATA
+========================================= */
+
+.history-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0ece7;
+    color: var(--brown-dark);
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.history-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.history-table tbody tr:hover {
+    background: var(--cream);
+}
+
+.history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.amount {
+    color: var(--brown);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+.quantity {
+    color: var(--brown-dark);
+    font-weight: 700;
+}
+
+
+/* =========================================
+   NO HISTORY
+========================================= */
+
+.no-history {
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--gray);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    width: 100%;
+    height: 55px;
+    padding: 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-top: 1px solid var(--cream-dark);
+    color: #aaa098;
+    font-size: 10px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+    .container {
+        padding: 40px 30px;
+    }
+
+    .history-table {
+        min-width: 600px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 12px 10px;
+    }
+
+    footer {
+        padding: 0 30px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .brand {
+        font-size: 11px;
+    }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .back-link {
+        height: 36px;
+        padding: 0 13px;
+    }
+
+    .container {
+        padding: 35px 20px;
+    }
+
+    .page-header {
+        margin-bottom: 25px;
+    }
+
+    .page-header h1 {
+        font-size: 40px;
+    }
+
+    .history-table-container {
+        border-radius: 14px;
+    }
+
+    .history-table {
+        min-width: 600px;
+    }
+
+    .history-table th {
+        padding: 11px 10px;
+        font-size: 8px;
+    }
+
+    .history-table td {
+        padding: 12px 10px;
+        font-size: 10px;
+    }
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.brand-mark {
+    color: var(--brown);
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+.brand-name {
+    color: var(--brown-dark);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+    footer {
+        height: 50px;
+        padding: 0 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+        <div class="brand">
+
+                <span class="brand-mark">
+                    ✦
+                </span>
+
+                <span class="brand-name">
+                    INKED WITH C&H
+                </span>
+
+            </div>
+
+        <div class="nav-actions">
+
+            <a href="{{ url_for('dashboard') }}" class="back-link">
+                ← Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+        <div class="page-header">
+
+            <span>CUSTOMER HISTORY</span>
+
+            <h1>Transaction History</h1>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <table class="history-table">
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Date & Time</th>
+                    <th>Customer Name</th>
+                    <th>Service</th>
+                    <th>Material</th>
+                    <th>Quantity Used</th>
+                    <th>Total Amount</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for transaction in transactions %}
+
+                <tr>
+
+                    <td>
+                        {{ transaction.id }}
+                    </td>
+
+                    <td>
+                        {{ transaction.created_at }}
+                    </td>
+
+                    <td>
+                        {{ transaction.customer_name }}
+                    </td>
+
+                    <td>
+                        {{ transaction.service }}
+                    </td>
+
+                    <td>
+                        {{ transaction.item_name }}
+                    </td>
+
+                    <td class="quantity">
+                        {{ transaction.quantity_used }}
+                    </td>
+
+                    <td class="amount">
+                        ₱{{ "%.2f"|format(transaction.total_amount) }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="7" class="no-history">
+                        No customer transactions yet.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</body>
+
+</html>

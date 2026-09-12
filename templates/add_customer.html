@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Customer [Inked with C & H]</title>
+
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('static', filename='log.ico') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='add_customer.css') }}">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header">
+
+            <span>CUSTOMER TRANSACTION</span>
+
+            <h1>Add Customer</h1>
+
+        </div>
+
+
+        <div class="customer-box">
+
+            <form method="POST"
+                  action="{{ url_for('add_customer') }}">
+
+
+                <!-- CUSTOMER NAME -->
+
+                <div class="form-group">
+
+                    <label for="customer_name">
+                        Customer Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customer_name"
+                        name="customer_name"
+                        placeholder="Enter customer name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SERVICE -->
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Service
+                    </label>
+
+                    <select
+                        id="service"
+                        name="service"
+                        required
+                    >
+
+                        <option value="">
+                            Select Service
+                        </option>
+
+                        <option value="Print">
+                            Print
+                        </option>
+
+                        <option value="Xerox">
+                            Xerox
+                        </option>
+
+                        <option value="Keychain">
+                            Keychain
+                        </option>
+
+                        <option value="Rush ID">
+                            Rush ID
+                        </option>
+
+                        <option value="Instax Mini">
+                            Instax Mini
+                        </option>
+
+                        <option value="Instax Square">
+                            Instax Square
+                        </option>
+
+                        <option value="Instax Wide">
+                            Instax Wide
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MATERIAL HEADER -->
+
+                <div class="material-header">
+
+                    <div>
+                        MATERIAL / STOCK USED
+                    </div>
+
+                    <div>
+                        QTY
+                    </div>
+
+                </div>
+
+
+                <!-- MATERIAL 1 - REQUIRED -->
+
+                <div class="material-row">
+
+                    <select
+                        name="stock_id_1"
+                        required
+                    >
+
+                        <option value="">
+                            Select Material
+                        </option>
+
+                        {% for stock in stocks %}
+
+                        <option value="{{ stock.id }}">
+                            {{ stock.item_name }}
+                            — Available: {{ stock.remaining_quantity }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        name="quantity_used_1"
+                        placeholder="Qty"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- MATERIAL 2 - OPTIONAL -->
+
+                <div class="material-row">
+
+                    <select name="stock_id_2">
+
+                        <option value="">
+                            Select Material
+                        </option>
+
+                        {% for stock in stocks %}
+
+                        <option value="{{ stock.id }}">
+                            {{ stock.item_name }}
+                            — Available: {{ stock.remaining_quantity }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        name="quantity_used_2"
+                        placeholder="Qty"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <!-- MATERIAL 3 - OPTIONAL -->
+
+                <div class="material-row">
+
+                    <select name="stock_id_3">
+
+                        <option value="">
+                            Select Material
+                        </option>
+
+                        {% for stock in stocks %}
+
+                        <option value="{{ stock.id }}">
+                            {{ stock.item_name }}
+                            — Available: {{ stock.remaining_quantity }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        name="quantity_used_3"
+                        placeholder="Qty"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <!-- MATERIAL 4 - OPTIONAL -->
+
+                <div class="material-row">
+
+                    <select name="stock_id_4">
+
+                        <option value="">
+                            Select Material
+                        </option>
+
+                        {% for stock in stocks %}
+
+                        <option value="{{ stock.id }}">
+                            {{ stock.item_name }}
+                            — Available: {{ stock.remaining_quantity }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        name="quantity_used_4"
+                        placeholder="Qty"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <!-- MATERIAL 5 - OPTIONAL -->
+
+                <div class="material-row">
+
+                    <select name="stock_id_5">
+
+                        <option value="">
+                            Select Material
+                        </option>
+
+                        {% for stock in stocks %}
+
+                        <option value="{{ stock.id }}">
+                            {{ stock.item_name }}
+                            — Available: {{ stock.remaining_quantity }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        name="quantity_used_5"
+                        placeholder="Qty"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <!-- TOTAL AMOUNT -->
+
+                <div class="form-group total-group">
+
+                    <label for="total_amount">
+                        Total Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="total_amount"
+                        name="total_amount"
+                        placeholder="₱0.00"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button type="submit">
+                    Record Customer
+                </button>
+
+
+                <!-- CANCEL -->
+
+                <a
+                    href="{{ url_for('stocks') }}"
+                    class="cancel-link"
+                >
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

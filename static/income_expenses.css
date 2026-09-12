@@ -1,0 +1,768 @@
+/* =========================================
+   COLORS
+========================================= */
+
+:root {
+    --brown-dark: #403025;
+    --brown: #5a4637;
+    --brown-light: #806f61;
+    --cream: #faf8f4;
+    --cream-dark: #eee8df;
+    --white: #ffffff;
+    --gray: #8c837b;
+    --border: #ddd5cc;
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   HTML + BODY
+========================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--brown-dark);
+}
+
+/* =========================================
+   FINANCE PAGE
+========================================= */
+
+.finance-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* =========================================
+   HEADER / NAVBAR
+========================================= */
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    padding: 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-bottom: 1px solid var(--cream-dark);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mark {
+    color: var(--brown);
+    font-size: 25px;
+    line-height: 1;
+}
+
+.brand-name {
+    color: var(--brown-dark);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   NAV RIGHT
+========================================= */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.user-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #9c8979;
+}
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+    background: var(--brown);
+    color: var(--white);
+    border-color: var(--brown);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.finance-content {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 55px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.finance-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.finance-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.finance-content::-webkit-scrollbar-thumb {
+    background: var(--brown-light);
+    border-radius: 10px;
+}
+
+.finance-content::-webkit-scrollbar-thumb:hover {
+    background: var(--brown);
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-label {
+    display: inline-block;
+    color: var(--brown-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.page-header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5vw, 55px);
+    line-height: 1;
+    color: var(--brown-dark);
+    margin-bottom: 12px;
+}
+
+.page-header p {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   FINANCE GRID
+========================================= */
+
+.finance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   FINANCE CARD
+========================================= */
+
+.finance-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 18px;
+    padding: 25px;
+}
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.section-label {
+    display: block;
+    color: var(--brown-light);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.card-header h2 {
+    font-family: "Playfair Display", serif;
+    color: var(--brown-dark);
+    font-size: 23px;
+    line-height: 1.2;
+}
+
+.card-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--cream);
+    color: var(--brown);
+    font-size: 21px;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   EXPENSE FORM
+========================================= */
+
+.expense-form {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: var(--brown-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--cream);
+    color: var(--brown-dark);
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--brown-light);
+    background: var(--white);
+}
+
+.form-group input::placeholder {
+    color: #aaa098;
+}
+
+/* =========================================
+   ADD EXPENSE BUTTON
+========================================= */
+
+.add-button {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background: var(--brown);
+    color: var(--white);
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-button:hover {
+    background: var(--brown-dark);
+}
+
+/* =========================================
+   INCOME DESCRIPTION
+========================================= */
+
+.income-description {
+    margin-top: -10px;
+    margin-bottom: 25px;
+    color: var(--gray);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   RECORDS SECTION
+========================================= */
+
+.records-section {
+    width: 100%;
+}
+
+.records-title {
+    color: var(--brown-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   TABLE CONTAINER
+========================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 430px;
+}
+
+thead {
+    border-bottom: 1px solid var(--cream-dark);
+}
+
+th {
+    padding: 10px 8px;
+    text-align: left;
+    color: var(--brown-light);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #f0ece7;
+    color: var(--brown-dark);
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: var(--cream);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.amount {
+    color: var(--brown);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.income-amount {
+    color: #5d765e;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =========================================
+   EMPTY RECORD
+========================================= */
+
+.empty {
+    padding: 25px 10px !important;
+    text-align: center !important;
+    color: var(--gray) !important;
+    font-size: 11px !important;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.edit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--white);
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.edit-button:hover {
+    background: var(--brown);
+    color: var(--white);
+    border-color: var(--brown);
+}
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-button {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--white);
+    color: #8a5d50;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+    background: #8a5d50;
+    color: var(--white);
+    border-color: #8a5d50;
+}
+
+/* =========================================
+   SECTION TOTAL
+========================================= */
+
+.section-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid var(--cream-dark);
+}
+
+.section-total span {
+    color: var(--brown-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section-total strong {
+    color: var(--brown-dark);
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+}
+
+/* =========================================
+   SUMMARY GRID
+========================================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   SUMMARY CARD
+========================================= */
+
+.summary-card {
+    min-height: 115px;
+    padding: 22px 25px;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.summary-label {
+    color: var(--brown-light);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.summary-card strong {
+    font-family: "Playfair Display", serif;
+    color: var(--brown-dark);
+    font-size: 27px;
+}
+
+/* =========================================
+   NET INCOME
+========================================= */
+
+.summary-card.net-income {
+    background: var(--brown);
+    border-color: var(--brown);
+}
+
+.summary-card.net-income .summary-label {
+    color: #d7c8ba;
+}
+
+.summary-card.net-income strong {
+    color: var(--white);
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-container {
+    position: absolute;
+    top: 25px;
+    right: 55px;
+    margin: 0;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--brown);
+    color: var(--white);
+    border-color: var(--brown);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    width: 100%;
+    height: 55px;
+    padding: 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-top: 1px solid var(--cream-dark);
+    color: #aaa098;
+    font-size: 10px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+    .finance-content {
+        padding: 40px 30px;
+    }
+
+    .finance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expense-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-group:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+        padding: 0 30px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .brand-name {
+        font-size: 11px;
+    }
+
+    .nav-right {
+        gap: 10px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .logout-button {
+        height: 36px;
+        padding: 0 13px;
+    }
+
+    .finance-content {
+        padding: 35px 20px;
+    }
+
+    .page-header {
+        margin-bottom: 25px;
+    }
+
+    .page-header h1 {
+        font-size: 40px;
+    }
+
+    .finance-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .finance-card {
+        padding: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 21px;
+    }
+
+    .expense-form {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .form-group:first-child {
+        grid-column: auto;
+    }
+
+    .add-button {
+        grid-column: auto;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .summary-card {
+        min-height: 100px;
+    }
+
+    .back-container {
+        margin-top: 5px;
+    }
+
+    .back-button {
+        width: 100%;
+    }
+
+    footer {
+        height: 50px;
+        padding: 0 20px;
+    }
+}

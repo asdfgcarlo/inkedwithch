@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Income & Expenses [Inked with C & H]</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='log.ico') }}">
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+>
+
+<!-- CSS -->
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='income_expenses.css') }}"
+>
+
+
+</head>
+
+<body>
+
+<main class="finance-page">
+
+
+<!-- ================================
+     NAVIGATION
+================================= -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <span class="brand-mark">
+            ✦
+        </span>
+
+        <span class="brand-name">
+            INKED WITH C&H
+        </span>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="back-button"
+        >
+            ← Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================================
+     CONTENT
+================================= -->
+
+<section class="finance-content">
+
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <span class="page-label">
+            ✦ FINANCES
+        </span>
+
+        <h1>
+            Income & Expenses
+        </h1>
+
+        <p>
+            Manage your business finances and monitor your financial activity.
+        </p>
+
+    </div>
+
+
+    <!-- ================================
+         FINANCE GRID
+    ================================= -->
+
+    <div class="finance-grid">
+
+
+        <!-- ============================
+             EXPENSES
+        ============================= -->
+
+        <div class="finance-card expense-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="section-label">
+                        EXPENSES
+                    </span>
+
+                    <h2>
+                        Add New Expense
+                    </h2>
+
+                </div>
+
+                <div class="card-icon">
+                    ₱
+                </div>
+
+            </div>
+
+
+            <!-- ADD EXPENSE FORM -->
+
+            <form
+                action="{{ url_for('income_expenses') }}"
+                method="POST"
+                class="expense-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="expense_name">
+                        Expense Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="expense_name"
+                        name="expense_name"
+                        placeholder="e.g. Printer Ink"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        name="amount"
+                        placeholder="0.00"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="add-button"
+                >
+                    Add Expense
+                </button>
+
+            </form>
+
+
+            <!-- EXPENSE RECORDS -->
+
+            <div class="records-section">
+
+                <div class="records-title">
+                    Expense Records
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for expense in expenses %}
+
+                            <tr>
+
+                                <td>
+                                    {{ expense.id }}
+                                </td>
+
+                                <td>
+                                    {{ expense.expense_name }}
+                                </td>
+
+                                <td class="amount">
+                                    ₱{{ "%.2f"|format(expense.amount) }}
+                                </td>
+
+                                <td>
+                                    {{ expense.date }}
+                                </td>
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <a
+                                            href="{{ url_for('edit_expense', id=expense.id) }}"
+                                            class="edit-button"
+                                        >
+                                            Edit
+                                        </a>
+
+                                        <form
+                                            action="{{ url_for('delete_expense', id=expense.id) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Delete this expense?');"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            {% else %}
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+                                    No expenses recorded yet.
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- TOTAL EXPENSES -->
+
+                <div class="section-total">
+
+                    <span>
+                        Total Expenses
+                    </span>
+
+                    <strong>
+                        ₱{{ "%.2f"|format(total_expenses) }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ============================
+             INCOME
+        ============================= -->
+
+        <div class="finance-card income-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="section-label">
+                        INCOME
+                    </span>
+
+                    <h2>
+                        Income History
+                    </h2>
+
+                </div>
+
+                <div class="card-icon">
+                    +
+                </div>
+
+            </div>
+
+
+            <p class="income-description">
+                Income is automatically retrieved from your transaction history.
+            </p>
+
+
+            <!-- INCOME RECORDS -->
+
+            <div class="records-section">
+
+                <div class="records-title">
+                    Income Records
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for income in incomes %}
+
+                            <tr>
+
+                                <td>
+                                    {{ income.date }}
+                                </td>
+
+                                <td>
+                                    {{ income.description }}
+                                </td>
+
+                                <td class="income-amount">
+                                    ₱{{ "%.2f"|format(income.amount) }}
+                                </td>
+
+                            </tr>
+
+                            {% else %}
+
+                            <tr>
+
+                                <td
+                                    colspan="3"
+                                    class="empty"
+                                >
+                                    No income records found.
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- TOTAL INCOME -->
+
+                <div class="section-total">
+
+                    <span>
+                        Total Income
+                    </span>
+
+                    <strong>
+                        ₱{{ "%.2f"|format(total_income) }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================
+         SUMMARY
+    ================================= -->
+
+    <div class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                TOTAL INCOME
+            </span>
+
+            <strong>
+                ₱{{ "%.2f"|format(total_income) }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                TOTAL EXPENSES
+            </span>
+
+            <strong>
+                ₱{{ "%.2f"|format(total_expenses) }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card net-income">
+
+            <span class="summary-label">
+                NET INCOME
+            </span>
+
+            <strong>
+                ₱{{ "%.2f"|format(net_income) }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <span>
+        © 2026 Your Brand
+    </span>
+
+    <span>
+        Made with simplicity.
+    </span>
+
+</footer>
+
+</main>
+
+</body>
+
+</html>

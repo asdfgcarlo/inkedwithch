@@ -1,0 +1,706 @@
+/* ==========================================
+   ROOT COLORS
+========================================== */
+
+:root {
+    --brown-dark: #403025;
+    --brown: #5a4637;
+    --brown-light: #806f61;
+    --cream: #faf8f4;
+    --cream-dark: #eee8df;
+    --white: #ffffff;
+    --gray: #8c837b;
+    --border: #ddd5cc;
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--brown-dark);
+}
+
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    padding: 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.brand-mark {
+    font-size: 18px;
+    color: var(--brown);
+}
+
+
+.brand-name {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--brown-dark);
+}
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brown-light);
+    font-size: 13px;
+}
+
+
+.user-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brown);
+}
+
+
+.calculator-button,
+.logout-button {
+    height: 40px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+
+.calculator-button:hover,
+.calculator-button.active {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: var(--white);
+}
+
+
+.logout-button:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: var(--white);
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.calculator-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 55px;
+}
+
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+
+.page-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--brown-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+
+.page-header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    line-height: 1.15;
+    font-weight: 600;
+    color: var(--brown-dark);
+}
+
+
+.page-header p {
+    margin-top: 10px;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   CALCULATOR CARD
+========================================== */
+
+.calculator-card {
+    width: 100%;
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: visible;
+}
+
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+
+thead {
+    border-bottom: 1px solid var(--border);
+}
+
+
+th {
+    padding: 0 8px 15px;
+    text-align: left;
+    color: var(--brown-light);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    white-space: normal;
+    line-height: 1.3;
+}
+
+
+td {
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--cream-dark);
+    vertical-align: middle;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ==========================================
+   TABLE COLUMN WIDTHS
+========================================== */
+
+/* MATERIAL */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 22%;
+}
+
+
+/* COST PRICE */
+th:nth-child(2),
+td:nth-child(2) {
+    width: 15%;
+}
+
+
+/* QUANTITY */
+th:nth-child(3),
+td:nth-child(3) {
+    width: 13%;
+}
+
+
+/* SELLING PRICE */
+th:nth-child(4),
+td:nth-child(4) {
+    width: 18%;
+}
+
+
+/* FINISHED PRODUCT QTY */
+th:nth-child(5),
+td:nth-child(5) {
+    width: 22%;
+}
+
+
+/* ACTION */
+th:nth-child(6),
+td:nth-child(6) {
+    width: 10%;
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+input,
+select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--white);
+    color: var(--brown-dark);
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+
+input:focus,
+select:focus {
+    border-color: var(--brown-light);
+    box-shadow: 0 0 0 3px rgba(90, 70, 55, 0.06);
+}
+
+
+input::placeholder {
+    color: #b5ada5;
+}
+
+
+input[type="number"] {
+    appearance: textfield;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+
+/* ==========================================
+   MARKUP DROPDOWN
+========================================== */
+
+.markup-select {
+    min-width: 105px;
+    cursor: pointer;
+    appearance: auto;
+}
+
+
+/* ==========================================
+   INPUT WITH PESO SYMBOL
+========================================== */
+
+.input-with-symbol {
+    position: relative;
+    width: 100%;
+}
+
+
+.input-with-symbol > span {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brown-light);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+
+.input-with-symbol input {
+    padding-left: 29px;
+}
+
+
+/* ==========================================
+   SELLING PRICE
+========================================== */
+
+.selling-price {
+    background: var(--cream);
+    color: var(--brown);
+    font-weight: 600;
+    cursor: default;
+}
+
+
+/* ==========================================
+   FINISHED PRODUCT QUANTITY
+========================================== */
+
+.finished-product-qty {
+    text-align: center;
+}
+
+
+/* ==========================================
+   DELETE BUTTON
+========================================== */
+
+.delete-button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--gray);
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+.delete-button:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: var(--white);
+}
+
+
+/* ==========================================
+   ADD ROW BUTTON
+========================================== */
+
+.add-row-container {
+    margin-top: 22px;
+}
+
+
+.add-column-button {
+    height: 42px;
+    padding: 0 17px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+.add-column-button span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+.add-column-button:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: var(--white);
+}
+
+
+/* ==========================================
+   COST SUMMARY
+========================================== */
+
+.cost-summary {
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    border-top: 1px solid var(--border);
+    
+}
+.summary-item.total-price {
+    background: var(--cream);
+    border-color: var(--border);
+}
+
+.summary-item.total-price strong {
+    color: var(--brown-dark);
+}
+
+
+
+
+.summary-item {
+    min-height: 105px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+
+.summary-label {
+    margin-bottom: 9px;
+    color: var(--brown-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+
+.summary-item strong {
+    color: var(--brown-dark);
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.summary-item.profit {
+    background: var(--brown);
+    border-color: var(--brown);
+}
+
+
+.summary-item.profit .summary-label {
+    color: #d9cec4;
+}
+
+
+.summary-item.profit strong {
+    color: var(--white);
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+
+    .calculator-content {
+        padding: 40px 30px;
+    }
+
+
+    .calculator-card {
+        padding: 25px;
+    }
+
+
+    th {
+        font-size: 8px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+
+    td {
+        padding: 12px 6px;
+    }
+
+
+    input,
+    select {
+        font-size: 12px;
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+
+    .input-with-symbol input {
+        padding-left: 26px;
+    }
+
+
+    .input-with-symbol > span {
+        left: 9px;
+    }
+
+
+    .delete-button {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .cost-summary {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 18px;
+    }
+
+
+    .brand-name {
+        font-size: 15px;
+    }
+
+
+    .nav-right {
+        gap: 10px;
+    }
+
+
+    .user-info {
+        display: none;
+    }
+
+
+    .calculator-button,
+    .logout-button {
+        height: 36px;
+        padding: 0 13px;
+        font-size: 11px;
+    }
+
+
+    .calculator-content {
+        padding: 30px 18px;
+    }
+
+
+    .page-header h1 {
+        font-size: 34px;
+    }
+
+
+    .calculator-card {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+
+    /*
+       Keep the table visible without
+       horizontal scrolling.
+    */
+    .table-wrapper {
+        margin: 0;
+        overflow-x: visible;
+    }
+
+
+    table {
+        table-layout: fixed;
+    }
+
+
+    th {
+        font-size: 7px;
+        letter-spacing: 0.4px;
+        padding: 0 3px 10px;
+    }
+
+
+    td {
+        padding: 10px 3px;
+    }
+
+
+    input,
+    select {
+        height: 38px;
+        font-size: 10px;
+        padding: 0 6px;
+    }
+
+
+    .input-with-symbol > span {
+        left: 6px;
+        font-size: 10px;
+    }
+
+
+    .input-with-symbol input {
+        padding-left: 19px;
+    }
+
+
+    .finished-product-qty {
+        text-align: center;
+    }
+
+
+    .delete-button {
+        width: 30px;
+        height: 30px;
+        font-size: 17px;
+    }
+
+
+    .cost-summary {
+        grid-template-columns: 1fr;
+    }
+
+}

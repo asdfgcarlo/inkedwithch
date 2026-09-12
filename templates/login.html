@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login [Inked with C & H]</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='log.ico') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='login.css') }}"
+    >
+</head>
+
+
+<body>
+
+    <main class="login-page">
+
+        <!-- =================================
+             LEFT SIDE
+        ================================== -->
+
+        <section class="left-section">
+
+            <div class="illustration">
+
+                <img
+                    src="{{ url_for('static', filename='log.jpg') }}"
+                    alt="Illustration"
+                    class="illustration-image"
+                >
+
+            </div>
+
+
+            <!-- Bottom Text -->
+
+            <div class="left-content">
+
+                <h2>
+                    Bring your ideas<br>
+                    to life.
+                </h2>
+
+                <p>
+                    Quality printing made simple, 
+                    from your design to the final print.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             RIGHT SIDE
+        ================================== -->
+
+        <section class="right-section">
+
+            <div class="login-card">
+
+                <!-- Header -->
+
+                <div class="login-header">
+
+                    <span class="small-star">
+                        ✦
+                    </span>
+
+                    <h1>
+                        Welcome back
+                    </h1>
+
+                    <p>
+                        Log in to continue your journey.
+                    </p>
+
+                </div>
+
+
+                <!-- Flash Message -->
+
+                {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+
+                        <div class="flash-message">
+                            {{ messages[0] }}
+                        </div>
+
+                    {% endif %}
+
+                {% endwith %}
+
+
+                <!-- Login Form -->
+
+                <form method="POST" class="login-form">
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <div class="password-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                        </div>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Remember Me -->
+
+                    <label class="remember-me">
+
+                        <input
+                            type="checkbox"
+                            name="remember"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        <span>
+                            Login
+                        </span>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- Divider -->
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+
+                <!-- Register -->
+
+                <p class="register-text">
+                    Don't have an account?
+
+                        <span class="register-disabled">
+                            Register here (Currently Disabled)
+                        </span>
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

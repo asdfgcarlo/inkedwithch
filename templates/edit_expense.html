@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Expense [Inked with C & H]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='income_expenses.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='log.ico') }}">
+</head>
+
+<body>
+
+<div class="finance-page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="brand-mark">✦</div>
+            <div class="brand-name">INKED WITH C&H</div>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="user-info">
+                <span class="user-dot"></span>
+                {{ username }}
+            </div>
+
+            <a href="{{ url_for('logout') }}" class="logout-button">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- CONTENT -->
+    <main class="finance-content">
+
+        <section class="page-header">
+
+            <span class="page-label">
+                ✦ FINANCES
+            </span>
+
+            <h1>Edit Expense</h1>
+
+            <p>
+                Update the details of this expense record.
+            </p>
+
+        </section>
+
+
+        <!-- EDIT EXPENSE -->
+        <div class="finance-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span class="section-label">
+                        EXPENSE RECORD
+                    </span>
+
+                    <h2>Edit Expense</h2>
+                </div>
+
+                <div class="card-icon">
+                    ₱
+                </div>
+
+            </div>
+
+
+            <form action="{{ url_for('edit_expense', id=expense.id) }}"
+                  method="POST"
+                  class="expense-form">
+
+                <div class="form-group">
+
+                    <label for="expense_name">
+                        EXPENSE NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="expense_name"
+                        name="expense_name"
+                        value="{{ expense.expense_name }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        AMOUNT
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        name="amount"
+                        step="0.01"
+                        min="0"
+                        value="{{ expense.amount }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        DATE
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value="{{ expense.date }}"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="add-button">
+                    Update Expense
+                </button>
+
+            </form>
+
+
+            <div class="back-container">
+
+                <a href="{{ url_for('income_expenses') }}"
+                   class="back-button">
+                    ← Back to Finances
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <span>© 2026 Your Brand</span>
+
+        <span>Made with simplicity.</span>
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>

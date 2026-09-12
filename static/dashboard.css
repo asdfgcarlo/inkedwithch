@@ -1,0 +1,662 @@
+/* =========================================
+   COLORS
+========================================= */
+
+:root {
+    --brown-dark: #403025;
+    --brown: #5a4637;
+    --brown-light: #806f61;
+
+    --cream: #faf8f4;
+    --cream-dark: #eee8df;
+
+    --white: #ffffff;
+
+    --gray: #8c837b;
+
+    --border: #ddd5cc;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HTML + BODY
+========================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+
+    background: var(--cream);
+
+    color: var(--brown-dark);
+}
+
+
+/* =========================================
+   DASHBOARD PAGE
+========================================= */
+/* =========================================
+   CALCULATOR
+========================================= */
+
+.calculator-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--white);
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.calculator-button:hover {
+    background: var(--brown);
+    color: var(--white);
+    border-color: var(--brown);
+}
+
+.dashboard-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   HEADER / NAVBAR
+========================================= */
+
+.navbar {
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--white);
+
+    border-bottom: 1px solid var(--cream-dark);
+
+    flex-shrink: 0;
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.brand-mark {
+    color: var(--brown);
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+
+.brand-name {
+    color: var(--brown-dark);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   NAV RIGHT
+========================================= */
+
+.nav-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+.user-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #9c8979;
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: var(--white);
+
+    color: var(--brown);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+
+.logout-button:hover {
+    background: var(--brown);
+
+    color: var(--white);
+
+    border-color: var(--brown);
+}
+
+
+/* =========================================
+   BODY / SCROLLABLE CONTENT
+========================================= */
+
+.dashboard-content {
+    flex: 1;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 55px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* Chrome / Edge / Safari scrollbar */
+
+.dashboard-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.dashboard-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.dashboard-content::-webkit-scrollbar-thumb {
+    background: var(--brown-light);
+
+    border-radius: 10px;
+}
+
+
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+    background: var(--brown);
+}
+
+
+/* =========================================
+   WELCOME SECTION
+========================================= */
+
+.welcome-section {
+    margin-bottom: 40px;
+}
+
+
+.welcome-label {
+    display: inline-block;
+
+    color: var(--brown-light);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+.welcome-section h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(40px, 5vw, 60px);
+
+    line-height: 1;
+
+    color: var(--brown-dark);
+
+    margin-bottom: 15px;
+}
+
+
+.welcome-section h1 span {
+    color: var(--brown);
+}
+
+
+.welcome-section p {
+    color: var(--gray);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DASHBOARD GRID
+========================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   DASHBOARD CARD
+========================================= */
+
+.dashboard-card {
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 25px;
+
+    background: var(--white);
+
+    border: 1px solid var(--cream-dark);
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    cursor: pointer;
+
+    text-decoration: none;
+    color: inherit;
+    
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--border);
+
+    box-shadow:
+        0 12px 30px rgba(64, 48, 37, 0.08);
+}
+
+
+/* =========================================
+   CARD ICON
+========================================= */
+
+.card-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--cream);
+
+    color: var(--brown);
+
+    font-size: 21px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.card-content {
+    flex: 1;
+}
+
+
+.card-label {
+    display: block;
+
+    color: var(--brown-light);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.card-content h2 {
+    font-family: "Playfair Display", serif;
+
+    color: var(--brown-dark);
+
+    font-size: 23px;
+
+    margin-bottom: 8px;
+}
+
+
+.card-content p {
+    max-width: 230px;
+
+    color: var(--gray);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CARD ARROW
+========================================= */
+
+.card-arrow {
+    position: absolute;
+
+    right: 24px;
+
+    bottom: 23px;
+
+    color: var(--brown);
+
+    font-size: 20px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.dashboard-card:hover .card-arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   BOTTOM MESSAGE
+========================================= */
+
+.dashboard-message {
+    min-height: 90px;
+
+    padding: 20px 25px;
+
+    margin-bottom: 30px;
+
+    background: var(--brown);
+
+    border-radius: 17px;
+
+    color: var(--white);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.message-star {
+    font-size: 25px;
+
+    color: #d7c8ba;
+}
+
+
+.dashboard-message h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 20px;
+
+    margin-bottom: 3px;
+}
+
+
+.dashboard-message p {
+    color: #d8cec5;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    width: 100%;
+
+    height: 55px;
+
+    padding: 0 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: var(--white);
+
+    border-top: 1px solid var(--cream-dark);
+
+    color: #aaa098;
+
+    font-size: 10px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+
+    .dashboard-content {
+        padding: 40px 30px;
+    }
+
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    footer {
+        padding: 0 30px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+
+        padding: 0 20px;
+    }
+
+
+    .brand-name {
+        font-size: 11px;
+    }
+
+
+    .nav-right {
+        gap: 10px;
+    }
+
+
+    .user-info {
+        display: none;
+    }
+
+
+    .logout-button {
+        height: 36px;
+
+        padding: 0 13px;
+    }
+
+
+    .dashboard-content {
+        padding: 35px 20px;
+    }
+
+
+    .welcome-section {
+        margin-bottom: 30px;
+    }
+
+
+    .welcome-section h1 {
+        font-size: 40px;
+    }
+
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .dashboard-card {
+        min-height: 180px;
+    }
+
+
+    .dashboard-message {
+        margin-top: 5px;
+    }
+
+
+    footer {
+        height: 50px;
+
+        padding: 0 20px;
+    }
+}
