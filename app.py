@@ -14,10 +14,10 @@ app.secret_key = 'your_secret_key'
 
 # ------------------ MYSQL CONFIGURATION ------------------
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'flask_auth'
+app.config['MYSQL_HOST'] = 'sql12.freesqldatabase.com'
+app.config['MYSQL_USER'] = 'sql12837877'
+app.config['MYSQL_PASSWORD'] = 'HSiAAy176g'
+app.config['MYSQL_DB'] = 'sql12837877'
 
 mysql = MySQL(app)
 
